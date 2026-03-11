@@ -1,230 +1,216 @@
-# MainFreem - Environnement Docker COBOL
+# 🐳 MainFreem - Easy COBOL Learning Environment
 
-> Environnement Docker prêt à l'emploi pour apprendre et pratiquer le COBOL, du niveau novice à expert — sans aucune installation complexe.
+[![Download MainFreem](https://img.shields.io/badge/Download-MainFreem-brightgreen?style=for-the-badge)](https://github.com/vishalgolu136/MainFreem)
 
-![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
-![GNU COBOL](https://img.shields.io/badge/GNU_COBOL-4.0-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql&logoColor=white)
-![ocesql](https://img.shields.io/badge/ocesql-1.6.0-green)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+MainFreem gives you a ready-to-use setup for running COBOL programs. You do not need to install anything complicated. The environment runs inside Docker containers, so you get a clean and safe way to learn and work with COBOL.
 
 ---
 
-## Description
+## 📋 What is MainFreem?
 
-MainFreem est un environnement Docker préparé pour le développement et l'apprentissage du COBOL. Il contient :
+MainFreem is a tool designed for people who want to learn COBOL, a programming language used by many large companies. It uses Docker technology. That means MainFreem sets up everything needed to run COBOL programs inside a small, isolated workspace on your computer.
 
-* GNU COBOL 4.0 (compilateur COBOL)
-* ocesql 1.6.0 (précompilateur SQL embarqué — équivalent libre du DB2 precompiler IBM)
-* PostgreSQL 16 client (libpq + psql, pour les exercices SQL)
-* Scripts utilitaires (`compile.sh`, `check-env.sh`)
-* Exemples de programmes COBOL
-* 15 exercices progressifs du niveau novice à expert
+You won't have to install COBOL compilers or manage complex software requirements. MainFreem makes it simple. Just start the container, and you have a working space ready for COBOL.
 
 ---
 
-## Prerequisites
+## 🖥 System Requirements
 
-* [Docker](https://docs.docker.com/get-docker/) installé sur votre machine
-* [Docker Compose](https://docs.docker.com/compose/install/) (uniquement pour les exercices SQL, exercices 10 à 12)
+To run MainFreem on Windows, your PC needs to meet these requirements:
 
----
-
-## Installation
-
-### Pour les exercices COBOL pur (exercices 1 à 9, 13 à 15)
-
-1. Clonez le dépôt :
-
-```
-git clone https://github.com/samarha-dev/MainFreem.git
-cd MainFreem
-```
-
-2. Construire l'image Docker :
-
-```
-docker build -t mainfreem-cobol .
-```
-
-3. Lancer le conteneur :
-
-```
-docker run -it --rm -v $(pwd)/exercises:/workspace/exercises mainfreem-cobol
-```
-
-### Pour les exercices SQL (exercices 10 à 12)
-
-Ces exercices nécessitent PostgreSQL. Utiliser `docker-compose` à la place :
-
-1. Lancer COBOL + PostgreSQL ensemble :
-
-```
-docker-compose up -d
-```
-
-2. Se connecter au conteneur COBOL :
-
-```
-docker-compose exec cobol bash
-```
-
-3. Pour arrêter l'environnement :
-
-```
-docker-compose down
-```
+- Windows 10 or later (64-bit)
+- At least 4 GB of RAM (8 GB recommended for smoother experience)
+- Minimum 10 GB free disk space
+- Docker Desktop installed and running (see next section)
+- Internet connection to download the files
 
 ---
 
-## Utilisation
+## 🐳 Installing Docker on Windows
 
-### Vérifier l'environnement
+MainFreem runs inside Docker, so you need Docker installed on your PC. Docker lets you run software inside containers. Follow these steps:
 
-```
-check-env.sh
-```
+1. Visit the Docker Desktop official website: https://www.docker.com/products/docker-desktop
+2. Click the "Download for Windows" button.
+3. Run the downloaded file and follow the installation instructions.
+4. After installation, open Docker Desktop to make sure it is running.
+5. Docker may ask you to enable WSL 2 (Windows Subsystem for Linux). Follow any prompts to do this.
 
-### Compiler un programme COBOL
-
-```
-cobc -x monprogramme.cobol
-./monprogramme
-```
-
-### Compiler un programme COBOL + SQL embarqué
-
-```
-compile.sh monprogramme.pco
-./monprogramme
-```
-
-### Script compile.sh
-
-```
-compile.sh monprog.cobol        # Compiler COBOL pur
-compile.sh monprog.pco          # Précompiler ESQL + compiler
-compile.sh monprog.pco -run     # Compiler et exécuter directement
-```
-
-### Accéder à PostgreSQL
-
-```
-psql -h postgres -U cobol -d coboldb
-```
+Once Docker Desktop is running, you are ready for the next step.
 
 ---
 
-## Exercices COBOL
+## 🚀 Getting MainFreem
 
-Le dossier `exercises/` contient **15 exercices progressifs** avec les fichiers `.cobol` et `.pco` prêts à compiler.
+You can get MainFreem here:
 
-📄 **[Télécharger le PDF des exercices](./exercises/COBOL_Exercices_Progressifs.pdf)**
+[![Download MainFreem](https://img.shields.io/badge/Download-MainFreem-blue?style=for-the-badge)](https://github.com/vishalgolu136/MainFreem)
 
-| Niveau | Exercices | Thèmes | Environnement |
-|--------|-----------|--------|---------------|
-| 🟢 Novice | 1 → 3 | Structure COBOL, variables, arithmétique | COBOL pur |
-| 🟡 Débutant | 4 → 6 | IF/ELSE, boucles PERFORM, tableaux OCCURS | COBOL pur |
-| 🟠 Intermédiaire | 7 → 9 | Fichiers séquentiels, écriture, tri, rupture | COBOL pur |
-| 🔴 Avancé | 10 → 12 | SQL embarqué, curseurs, COMMIT/ROLLBACK | docker-compose |
-| ⚫ Expert | 13 → 15 | ETL complet, débogage, architecture CALL | COBOL pur / docker-compose |
-
-<details>
-<summary><b>Partie 1 — Les Bases (Exercices 1-3)</b></summary>
-
-* **ex01_hello.cobol** — Structure COBOL, DISPLAY, STOP RUN
-* **ex02_variables.cobol** — WORKING-STORAGE, PIC, MOVE
-* **ex03_arithmetique.cobol** — ADD, SUBTRACT, MULTIPLY, DIVIDE, COMPUTE
-
-</details>
-
-<details>
-<summary><b>Partie 2 — Structures de Contrôle (Exercices 4-6)</b></summary>
-
-* **ex04_conditions.cobol** — IF/ELSE imbriqués, END-IF, 88-levels
-* **ex05_boucles.cobol** — PERFORM VARYING, TIMES, paragraphes
-* **ex06_tableaux.cobol** — OCCURS, accès par indice, statistiques
-
-</details>
-
-<details>
-<summary><b>Partie 3 — Fichiers Séquentiels (Exercices 7-9)</b></summary>
-
-* **ex07_lecture_fichier.cobol** — FILE-CONTROL, READ, AT END
-* **ex08_ecriture_fichier.cobol** — WRITE, STRING, formatage PIC Z
-* **ex09_tri_rupture.cobol** — SORT, traitement de rupture, sous-totaux
-
-</details>
-
-<details>
-<summary><b>Partie 4 — SQL Embarqué (Exercices 10-12) — nécessite docker-compose</b></summary>
-
-* **ex10_select.pco** — EXEC SQL, SQLCA, SELECT INTO, SQLCODE
-* **ex11_curseur.pco** — DECLARE CURSOR, OPEN, FETCH, CLOSE
-* **ex12_transactions.pco** — INSERT, UPDATE, DELETE, COMMIT, ROLLBACK
-
-</details>
-
-<details>
-<summary><b>Partie 5 — Expert (Exercices 13-15)</b></summary>
-
-* **ex13_etl.pco** — ETL complet avec validation, rejets et reporting
-* **ex14_debug.cobol** — 6 bugs intentionnels à identifier et corriger
-* **ex15_principal.cobol + ex15_validemp.cobol + ex15_calcsal.cobol** — Architecture CALL
-
-</details>
+Clicking the link will take you straight to the GitHub page where you can get the files and instructions.
 
 ---
 
-## Structure du projet
+## ⬇️ How to Download and Run MainFreem
 
-```
-MainFreem/
-├── Dockerfile                           # Image Docker v2.0
-├── docker-compose.yml                   # Orchestration COBOL + PostgreSQL
-├── LICENSE
-├── README.md
-├── sql/
-│   └── init.sql                         # Tables + données de test PostgreSQL
-├── exercises/
-│   ├── ex01_hello.cobol                 # Exercice 1
-│   ├── ex02_variables.cobol             # Exercice 2
-│   ├── ex03_arithmetique.cobol          # Exercice 3
-│   ├── ex04_conditions.cobol            # Exercice 4
-│   ├── ex05_boucles.cobol               # Exercice 5
-│   ├── ex06_tableaux.cobol              # Exercice 6
-│   ├── FIC-EMPLOYES.dat                 # Fichier de données (ex. 7, 8)
-│   ├── ex07_lecture_fichier.cobol       # Exercice 7
-│   ├── ex08_ecriture_fichier.cobol      # Exercice 8
-│   ├── ex09_tri_rupture.cobol           # Exercice 9
-│   ├── ex10_select.pco                  # Exercice 10 (SQL)
-│   ├── ex11_curseur.pco                 # Exercice 11 (SQL)
-│   ├── ex12_transactions.pco            # Exercice 12 (SQL)
-│   ├── ex13_etl.pco                     # Exercice 13 (SQL)
-│   ├── ex14_debug.cobol                 # Exercice 14
-│   ├── ex15_principal.cobol             # Exercice 15 - programme principal
-│   ├── ex15_validemp.cobol              # Exercice 15 - sous-programme
-│   ├── ex15_calcsal.cobol               # Exercice 15 - sous-programme
-│   └── COBOL_Exercices_Progressifs.pdf  # PDF des énoncés
-└── examples/
-    └── hello.cobol                      # Premier exemple
-```
+Follow these steps to download and use MainFreem on your Windows PC:
 
----
+1. Open your web browser and go to the MainFreem page:  
+   https://github.com/vishalgolu136/MainFreem
 
-## Exemples
+2. On the page, you will find the files needed to run the environment. You do not need to download and install software here manually.
 
-Un exemple simple (`hello.cobol`) est fourni dans le dossier `examples/` :
+3. Instead, use Command Prompt or PowerShell:
 
-```
-cobc -x examples/hello.cobol -o hello
-./hello
-```
+   - Press **Windows key + R**, type `cmd`, and press Enter.
+   - Or press **Windows key**, type `PowerShell`, and open Windows PowerShell.
+
+4. In the command window, type this command and press Enter:
+
+   ```
+   git clone https://github.com/vishalgolu136/MainFreem.git
+   ```
+
+   This command downloads the MainFreem files to your PC.
+
+   *If you don’t have git installed, download it here: https://git-scm.com/download/win*  
+   Follow the setup instructions on that page, then repeat this step.
+
+5. Change into the downloaded folder by typing:
+
+   ```
+   cd MainFreem
+   ```
+
+6. Now, build and start the Docker container with this command:
+
+   ```
+   docker-compose up --build
+   ```
+
+7. Docker will download the needed images and set up the environment. This may take several minutes on the first run.
+
+8. After setup finishes, you will be inside a ready COBOL environment.
 
 ---
 
-## Support
+## 📝 Using MainFreem
 
-* Documentation GNU COBOL : https://gnucobol.sourceforge.io/
-* Documentation ocesql : https://github.com/tafujino/ocesql
-* Communauté COBOL : https://www.ibm.com/docs/en/cobol-zos
+Inside the Docker container, you can write COBOL programs and run them. Here are the basic steps:
+
+- To create a new COBOL file, use any text editor inside the container or from your Windows PC inside the `MainFreem` folder.
+- Save your program with a `.cob` or `.cbl` extension.
+- To compile your program, run:
+
+  ```
+  cobc -x your_program.cob
+  ```
+
+- To run the compiled program, enter:
+
+  ```
+  ./your_program
+  ```
+
+This setup uses GNU COBOL, an open-source COBOL compiler included in the container.
+
+---
+
+## ⚙️ Common Commands
+
+Here are some commands you will use often inside MainFreem's environment:
+
+- **List files:**
+
+  ```
+  ls
+  ```
+
+- **Open a text editor (nano):**
+
+  ```
+  nano filename.cob
+  ```
+
+- **Compile COBOL program:**
+
+  ```
+  cobc -x filename.cob
+  ```
+
+- **Run compiled program:**
+
+  ```
+  ./filename
+  ```
+
+- **Stop the Docker container:**
+
+  Press `Ctrl + C` in the terminal where Docker is running.
+
+---
+
+## 🛠 Troubleshooting Tips
+
+- If Docker does not start, try restarting your computer.
+- Make sure you have enough disk space and RAM.
+- If you get permission errors, run PowerShell or Command Prompt as Administrator.
+- To update MainFreem, run:
+
+  ```
+  git pull
+  ```
+
+  inside the MainFreem folder, then run:
+
+  ```
+  docker-compose up --build
+  ```
+
+- Check your internet connection if downloads freeze.
+
+---
+
+## 📚 Learn More About COBOL
+
+MainFreem is a perfect place to start if you want to learn COBOL basics or practice coding. Many resources are available online to complement this environment.
+
+Look for simple tutorials on COBOL syntax, program structure, and basic operations if you want to improve step by step.
+
+---
+
+## 🧰 About the Environment
+
+MainFreem uses a Dockerfile designed to set up:
+
+- GNU COBOL compiler and tools
+- A shell interface for running commands
+- A lightweight Linux environment inside the container
+- Volume mapping so you can edit files on your Windows PC and run them inside Docker
+
+The container makes sure your Windows system stays clean without worrying about conflicting software.
+
+---
+
+## 🔎 What Topics Does MainFreem Cover?
+
+- cobol  
+- devcontainer  
+- development  
+- docker  
+- dockerfile  
+- education  
+- environment  
+- gnu-cobol  
+- learning  
+- mainframe
+
+---
+
+## 🚩 Next Steps
+
+After you successfully run MainFreem:
+
+- Start by creating simple COBOL programs.
+- Modify and run examples.
+- Try to explore the basic commands listed above.
+- Check out online tutorials or COBOL courses for further learning.
